@@ -1,13 +1,14 @@
 select ftn.tree_code
 , ftn.pk1_start_value as account_code
 , ftn.parent_pk1_value as parent_account_code
+, decode(ffv.enabled_flag,'Y','Yes','No') as enabled_flag
 , ffv.description as account_description
-, substr(replace(ffv.compiled_value_attributes,CHR(10),''),1,1) as attribute_summary
-, substr(replace(ffv.compiled_value_attributes,CHR(10),''),2,1) as attribute_allow_posting
-, substr(replace(ffv.compiled_value_attributes,CHR(10),''),3,1) as attribute_allow_bugetting
-, substr(replace(ffv.compiled_value_attributes,CHR(10),''),4,1) as attribute_account_type
-, substr(replace(ffv.compiled_value_attributes,CHR(10),''),5,1) as attribute_3rd_party_control
-, substr(replace(ffv.compiled_value_attributes,CHR(10),''),6,1) as attribute_reconcile
+, decode(substr(replace(ffv.compiled_value_attributes,CHR(10),''),1,1),'Y','Yes','No') as attribute_summary
+, decode(substr(replace(ffv.compiled_value_attributes,CHR(10),''),2,1),'Y','Yes','No') as attribute_allow_posting
+, decode(substr(replace(ffv.compiled_value_attributes,CHR(10),''),3,1),'Y','Yes','No') as attribute_allow_bugetting
+, decode(substr(replace(ffv.compiled_value_attributes,CHR(10),''),4,1),'A','Asset','E','Expense','L','Liability','E','Owner''s Equity','R','Revenue') as attribute_account_type
+, decode(substr(replace(ffv.compiled_value_attributes,CHR(10),''),5,1),'Y','Yes','No') as attribute_3rd_party_control
+, decode(substr(replace(ffv.compiled_value_attributes,CHR(10),''),6,1),'Y','Yes','No') as attribute_reconcile
 , ftn.depth
 , ftn.child_count
 from FND_TREE ft /*This table holds Trees details for managing trees.*/
