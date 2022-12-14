@@ -1,6 +1,6 @@
 select xep.name as legal_entity_name
 , xep.legal_entity_id as legal_entity_id
-, hou.name  as busines_unit_name
+, hou.name  as business_unit_name
 , hou.organization_id as org_id
 , geo.country_code as country_code
 , geo.geography_id as geography_id
