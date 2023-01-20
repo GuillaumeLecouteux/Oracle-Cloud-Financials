@@ -1,12 +1,3 @@
-/*==================================
-Fusion Real Time Reporting Query DDL Script Supplier_Changes.sql
-BIP Report view for Supplier Changes
-
-Change Control
-Date           Author                Description
-28-03-2022     Lakshman              commented og_id join for RA_CUST_TRX_TYPES_ALL as oeg id is not populated in table and not required as PK is CUST_TRX_TYPE_SEQ_ID
-=====================================*/
-
 WITH vCustSite as
 (SELECT hca.CUST_ACCOUNT_ID      AS CUST_ACCOUNT_ID,
     HL.address1                 AS ADDRESS1,
